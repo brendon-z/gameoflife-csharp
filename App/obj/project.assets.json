@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\BrendonZ\\Documents\\Projects\\gameoflife-csharp\\App\\App.csproj",
+      "projectUniqueName": "C:\\Users\\BrendonZ\\Documents\\WSLDocuments\\projects\\gameoflife-csharp\\App\\App.csproj",
       "projectName": "App",
-      "projectPath": "C:\\Users\\BrendonZ\\Documents\\Projects\\gameoflife-csharp\\App\\App.csproj",
+      "projectPath": "C:\\Users\\BrendonZ\\Documents\\WSLDocuments\\projects\\gameoflife-csharp\\App\\App.csproj",
       "packagesPath": "C:\\Users\\BrendonZ\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\BrendonZ\\Documents\\Projects\\gameoflife-csharp\\App\\obj\\",
+      "outputPath": "C:\\Users\\BrendonZ\\Documents\\WSLDocuments\\projects\\gameoflife-csharp\\App\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\BrendonZ\\AppData\\Roaming\\NuGet\\NuGet.Config"

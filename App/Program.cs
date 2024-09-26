@@ -18,10 +18,17 @@
         {
             Console.WriteLine("Number of starting cells: ");
             cellCount = Convert.ToInt32(Console.ReadLine());
-        }        
+        }
         GenerateSeed(grid, cellCount);
+        PrintGrid(grid);
 
-        PrintArray(grid);
+        while (cellCount > 0)
+        {
+            cellCount = tick(grid, cellCount);
+            Thread.Sleep(500);
+        }
+
+        Console.WriteLine("Done!");
     }
 
 
@@ -31,31 +38,87 @@
         {
             for (int j = 0; j < grid.GetLength(1); j++)
             {
-                grid[i,j] = 'O';
+                grid[i, j] = ' ';
             }
-            Console.WriteLine();
         }
 
         Random random = new();
-
+        List<Tuple<int, int>> prevCoords = new();
         for (int i = 0; i < quantity; i++)
         {
-            int x = random.Next(gridWidth - 1);
-            int y = random.Next(gridHeight - 1);
-            Console.WriteLine(x + " " + y);
+            Tuple<int, int> coord;
+            int x;
+            int y;
+            do {
+                x = random.Next(gridWidth - 1);
+                y = random.Next(gridHeight - 1);
+                coord = new Tuple<int, int>(x, y);
+            } while (prevCoords.Contains(coord));
+            prevCoords.Add(coord);
             grid[x, y] = 'X';
         }
     }
 
-    public static void PrintArray(char[,] grid)
+    public static void PrintGrid(char[,] grid)
     {
         for (int i = 0; i < grid.GetLength(0); i++)
         {
             for (int j = 0; j < grid.GetLength(1); j++)
             {
-                Console.Write(grid[i,j].ToString() + ' ');
+                Console.Write(grid[i, j].ToString() + ' ');
             }
             Console.WriteLine();
         }
+    }
+
+    public static int tick(char[,] grid, int cellCount)
+    {
+        for (int i = 0; i < grid.GetLength(0); i++)
+        {
+            for (int j = 0; j < grid.GetLength(1); j++)
+            {
+                string neighbours = "";
+                if (isValid(i - 1, j - 1, gridHeight, gridWidth))
+                { neighbours += grid[i - 1, j - 1]; }
+                if (isValid(i - 1, j, gridHeight, gridWidth))
+                { neighbours += grid[i - 1, j]; }
+                if (isValid(i - 1, j + 1, gridHeight, gridWidth))
+                { neighbours += grid[i - 1, j + 1]; }
+                if (isValid(i, j - 1, gridHeight, gridWidth))
+                { neighbours += grid[i, j - 1]; }
+                if (isValid(i, j + 1, gridHeight, gridWidth))
+                { neighbours += grid[i, j + 1]; }
+                if (isValid(i + 1, j - 1, gridHeight, gridWidth))
+                { neighbours += grid[i + 1, j - 1]; }
+                if (isValid(i + 1, j, gridHeight, gridWidth))
+                { neighbours += grid[i + 1, j]; }
+                if (isValid(i + 1, j + 1, gridHeight, gridWidth))
+                { neighbours += grid[i + 1, j + 1]; }
+
+                int neighbourCount = neighbours.Replace(" ", "").Length;
+                
+                if (grid[i,j] == 'X' && neighbourCount != 3 && neighbourCount != 2)
+                {
+                    grid[i,j] = ' ';
+                    cellCount--;
+                } else if (grid[i,j] == ' ' && neighbourCount == 3)
+                {
+                    grid[i,j] = 'X';
+                    cellCount++;
+                }
+            }
+        }
+        PrintGrid(grid);
+        Console.WriteLine("Cells alive: " + cellCount);
+        return cellCount;
+    }
+
+    public static bool isValid(int i, int j, int iMax, int jMax)
+    {
+        if (i < 0 || j < 0 || i > iMax - 1 || j > jMax - 1)
+        {
+            return false;
+        }
+        return true;
     }
 }
