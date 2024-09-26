@@ -1,6 +1,4 @@
-﻿using System.Security.Cryptography.X509Certificates;
-
-public static class Conway
+﻿public static class Conway
 {
     private static int gridWidth;
     private static int gridHeight;
@@ -55,7 +53,7 @@ public static class Conway
         {
             for (int j = 0; j < grid.GetLength(1); j++)
             {
-                Console.Write(grid[i,j].ToString() + '\t');
+                Console.Write(grid[i,j].ToString() + ' ');
             }
             Console.WriteLine();
         }
