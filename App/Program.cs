@@ -1,4 +1,8 @@
-﻿public static class Conway
+﻿using System;
+using System.Collections.Generic;
+using System.Threading;
+
+public static class Conway
 {
     private static int gridWidth;
     private static int gridHeight;
@@ -51,8 +55,8 @@
             }
         }
 
-        Random random = new();
-        List<Tuple<int, int>> prevCoords = new();
+        Random random = new Random();
+        List<Tuple<int, int>> prevCoords = new List<Tuple<int, int>>();
         for (int i = 0; i < quantity; i++)
         {
             double meanX = gridWidth / 2.0;
@@ -69,7 +73,7 @@
                 coord = new Tuple<int, int>(x, y);
             } while (prevCoords.Contains(coord));
             prevCoords.Add(coord);
-            grid[x, y] = '■';
+            grid[y, x] = '■';
         }
     }
 
@@ -136,7 +140,7 @@
         }
         return true;
     }
-    
+
     // Gaussian distribution using Box-Muller transformation
     private static double NextGaussian(Random rng, double mean, double stdDev)
     {
@@ -152,5 +156,4 @@
     {
         return Math.Max(min, Math.Min(max, value));
     }
-
 }
