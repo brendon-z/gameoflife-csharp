@@ -41,7 +41,6 @@
         Console.WriteLine("Done!");
     }
 
-
     public static void GenerateSeed(char[,] grid, int quantity)
     {
         for (int i = 0; i < grid.GetLength(0); i++)
