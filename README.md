@@ -8,4 +8,4 @@ This program is run from the command line. Simply execute the .exe and enter the
 I've used a random Gaussian distribution for the initial seeding of the grid, but it's recommended to use relatively high initial cell counts (>50) to ensure your
 system doesn't die out in a few generations.
 
-![{5CE56A2E-936C-46D3-B122-DBA82D4B202B}](https://github.com/user-attachments/assets/51aaedde-b258-442c-81c0-74c2d696d782)
+![Desktop2025 09 02-18 33 50 02-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/65d0b780-2c90-4237-a197-e1f9a91c553c)
